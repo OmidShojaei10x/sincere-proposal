@@ -377,22 +377,38 @@
     <script src="assets/js/comments.js"></script>
     <script src="assets/js/animations.js"></script>
 
+    <script>
         // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100
+            });
+        }
 
-        // Hide loading screen
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loading-screen').style.opacity = '0';
+        // Hide loading screen - با fallback برای اطمینان از پنهان شدن
+        function hideLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.style.opacity = '0';
                 setTimeout(() => {
-                    document.getElementById('loading-screen').style.display = 'none';
+                    loadingScreen.style.display = 'none';
                 }, 300);
-            }, 500);
-        });
+            }
+        }
+
+        // چند روش برای پنهان کردن loading screen
+        if (document.readyState === 'complete') {
+            setTimeout(hideLoadingScreen, 1000);
+        } else {
+            window.addEventListener('load', () => {
+                setTimeout(hideLoadingScreen, 1000);
+            });
+        }
+
+        // Fallback: اگر بعد از 3 ثانیه هنوز loading است، آن را پنهان کن
+        setTimeout(hideLoadingScreen, 3000);
     </script>
 </body>
 </html>
