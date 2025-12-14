@@ -27,8 +27,8 @@ npm-debug.log*
 index.html.backup
 
 # Old folders (keep for reference)
-Sincere/
-Yektanet/
+# Sincere/ - Now included for images
+# Yektanet/ - Now included for brand assets
 css/
 js/
 images/
