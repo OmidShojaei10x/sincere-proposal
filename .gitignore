@@ -26,6 +26,14 @@ npm-debug.log*
 *.temp
 index.html.backup
 
+# Backup files
+*.tar.gz
+*.zip
+*backup*
+*back-up*
+*Backup*
+*Back-Up*
+
 # Old folders (keep for reference)
 # Sincere/ - Now included for images
 # Yektanet/ - Now included for brand assets
